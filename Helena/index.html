@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Helena Duarte · Nutricionista · Emagrecimento sustentável</title>
+<meta name="description" content="Nutrição para mulheres que já tentaram de tudo. Um plano que cabe na sua rotina e continua funcionando depois do primeiro mês.">
+<meta name="theme-color" content="#FBF5F2">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%233B2D36'/%3E%3Cpath d='M10 9v14M22 9v14M10 16h12' stroke='%23E7A9A8' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200..700&display=swap" rel="stylesheet">
+<style>
+/* ===== variáveis (pastel soft) ===== */
+:root{--ink:#3B2D36;--ink2:#2A1F27;--rose:#F2CFCB;--rose2:#E7A9A8;--lilac:#E4DDF2;--peach:#FBE3D3;--blush:#FBF5F2;--acc:#A34E5A;--mut:#76666F;--line:#3B2D3624;
+--f:'Outfit','Segoe UI',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1);--pad:clamp(22px,5.5vw,84px);--r:28px}
+/* ===== reset/base ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font:350 1.08rem/1.7 var(--f);background:var(--blush);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:500;letter-spacing:-.035em;line-height:1.02;text-wrap:balance}
+h2{font-size:clamp(2.2rem,6vw,3.9rem)}h2 .lt,.hl .lt{font-weight:200}
+h3{font-size:1.35rem;letter-spacing:-.02em;line-height:1.15}
+p{max-width:54ch;text-wrap:pretty}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:4px;border-radius:10px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:12px 18px;z-index:99;border-radius:99px}.skip:focus{left:8px}
+section{padding:clamp(76px,11vw,150px) var(--pad)}
+.wrap{max-width:1240px;margin-inline:auto}
+.lab{display:block;font:500 .72rem var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--acc);margin-bottom:22px}
+.lead{font-size:clamp(1.1rem,2.2vw,1.3rem);font-weight:300;color:var(--mut)}
+/* ===== botão ===== */
+.btn{position:relative;display:inline-flex;align-items:center;gap:.8em;min-height:56px;padding:0 1.9em;border:0;border-radius:99px;background:var(--ink);color:var(--blush);font:500 .96rem var(--f);letter-spacing:.04em;text-decoration:none;cursor:pointer;overflow:hidden;isolation:isolate;transition:transform .4s var(--ease),color .3s,box-shadow .4s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;background:var(--rose2);transform:translateY(101%);border-radius:50% 50% 0 0;transition:transform .55s var(--ease),border-radius .55s var(--ease);z-index:-1}
+.btn:hover{color:var(--ink2);box-shadow:0 16px 28px -16px var(--rose2)}.btn:hover::before{transform:none;border-radius:0}
+.btn:active{transform:scale(.97)}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .4s var(--ease)}.btn:hover svg{transform:translateX(5px)}
+.btn.sm{min-height:44px;padding:0 1.3em;font-size:.88rem}
+.btn.ol{background:none;color:var(--ink);box-shadow:inset 0 0 0 1.4px var(--ink)}.btn.ol::before{background:var(--rose)}
+/* ===== progresso + header ===== */
+#pg{position:fixed;left:0;top:0;height:2px;width:100%;background:var(--rose2);transform-origin:left;transform:scaleX(0);z-index:90}
+header{position:fixed;inset:0 0 auto;z-index:70;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px var(--pad);color:var(--ink);transition:background .4s,padding .4s,box-shadow .4s}
+header.on{background:color-mix(in oklab,var(--blush) 86%,transparent);backdrop-filter:blur(16px);padding-block:10px;box-shadow:0 1px 0 var(--line)}
+.logo{text-decoration:none;line-height:1.1}.logo b{display:block;font:500 1.25rem var(--f);letter-spacing:-.02em}.logo small{font-size:.72rem;color:var(--mut);letter-spacing:.04em}
+@media(max-width:560px){.logo small{display:none}}
+/* ===== loader ===== */
+#ld{position:fixed;inset:0;z-index:100;background:var(--rose);display:grid;place-items:center;color:var(--ink);transition:clip-path 1s var(--ease);clip-path:circle(150% at 50% 50%)}
+#ld b{font:300 clamp(2.2rem,9vw,4rem) var(--f);letter-spacing:-.04em;overflow:hidden;display:flex}
+#ld b span{display:inline-block;transform:translateY(110%);animation:up .8s var(--ease) forwards;animation-delay:calc(var(--i)*35ms)}
+#ld.off{clip-path:circle(0% at 50% 50%)}
+@keyframes up{to{transform:none}}
+/* ===== imagens ===== */
+.im{position:relative;overflow:hidden;background-color:#EBDDE0;background-size:cover;background-position:center}
+.im img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;will-change:transform;transition:transform 1.4s var(--ease),opacity .8s;opacity:0}
+.im img.ok{opacity:1}
+.im.rv{opacity:1;transform:none;clip-path:inset(100% 0 0 0);transition:clip-path 1.4s var(--ease)}.im.rv.in{clip-path:inset(0)}
+/* ===== hero ===== */
+.hero{position:relative;min-height:100svh;display:grid;gap:30px;align-content:center;padding:104px var(--pad) 56px;overflow:hidden;background:radial-gradient(45% 40% at 88% 14%,#E4DDF2,#E4DDF200),radial-gradient(45% 45% at 6% 92%,#F2CFCB,#F2CFCB00),radial-gradient(35% 35% at 72% 88%,#FBE3D3,#FBE3D300),var(--blush)}
+.hero::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.05;mix-blend-mode:multiply;pointer-events:none}
+.hbg{order:-1;position:relative;z-index:1;width:min(100%,460px);aspect-ratio:4/4.7;margin-inline:auto;border-radius:260px 260px var(--r) var(--r);box-shadow:0 40px 60px -40px #A34E5A88}
+.hero .wrap{position:relative;z-index:2;width:100%;margin:0}
+.hero h1{font-size:clamp(2.6rem,10.6vw,4.7rem);letter-spacing:-.045em;line-height:.98}
+.hl .ln{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
+.hl .ln>span{display:block;transform:translateY(112%);transition:transform 1.2s var(--ease);transition-delay:calc(var(--k,0)*.14s + .1s)}
+.hl .ln:nth-child(2)>span{--k:1}.hl .ln:nth-child(3)>span{--k:2}
+.ready .hl .ln>span{transform:none}
+.hl .hi{background:linear-gradient(transparent 60%,var(--rose2) 60% 92%,transparent 92%);background-repeat:no-repeat;background-size:0 100%;transition:background-size 1.2s 1.2s var(--ease)}
+.ready .hl .hi{background-size:100% 100%}
+.hero .lead{margin:24px 0 30px}
+.hero .row{display:flex;flex-wrap:wrap;gap:12px}
+.proofrow{display:flex;align-items:center;gap:14px;margin-top:28px;font-size:.92rem;color:var(--mut)}
+.av{display:flex}.av .im{width:44px;height:44px;border-radius:50%;border:3px solid var(--blush);margin-left:-12px}.av .im:first-child{margin-left:0}
+.hcard{display:none}
+@media(min-width:940px){.hero{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:70px;align-items:center;padding-inline:max(var(--pad),calc((100vw - 1240px)/2))}
+.hbg{order:2;width:min(100%,500px);margin-inline:auto 0}.hero .wrap{order:1}
+.hero h1{font-size:clamp(3.4rem,5.6vw,5.2rem)}
+.hcard{display:flex;position:absolute;z-index:3;right:calc(max(var(--pad),calc((100vw - 1240px)/2)) + 380px);bottom:12%;background:#fffc;backdrop-filter:blur(10px);color:var(--ink);padding:16px 22px;border-radius:99px;gap:14px;align-items:center;box-shadow:0 24px 40px -22px #A34E5A88;animation:fl 6s ease-in-out infinite alternate}
+.hcard b{font:300 2.2rem var(--f);letter-spacing:-.05em;color:var(--acc)}.hcard span{font-size:.84rem;line-height:1.3}}
+@keyframes fl{to{transform:translateY(-10px)}}
+/* ===== marquee ===== */
+.mq{background:var(--rose);color:var(--ink);overflow:hidden;white-space:nowrap;padding:18px 0}
+.mq div{display:inline-flex;gap:2.6rem;animation:mq 34s linear infinite;font:300 clamp(1.3rem,3vw,1.9rem) var(--f);letter-spacing:-.02em}
+.mq span:nth-child(even){font-weight:500}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* ===== identificação ===== */
+.id .g{display:grid;gap:56px;align-items:center}
+.sit{list-style:none;padding:0;margin-top:34px;counter-reset:n}
+.sit li{counter-increment:n;display:flex;gap:20px;align-items:baseline;padding:22px 0;border-top:1px solid var(--line);font:400 clamp(1.2rem,2.8vw,1.6rem)/1.25 var(--f);letter-spacing:-.025em;transition:padding .5s var(--ease)}
+.sit li:last-child{border-bottom:1px solid var(--line)}
+.sit li::before{content:"0" counter(n);font:500 .78rem var(--f);letter-spacing:.14em;color:var(--acc)}
+.sit li:hover{padding-left:14px}
+.col2{position:relative;aspect-ratio:1/1.05}
+.col2 .a{position:absolute;left:0;top:0;width:68%;height:72%;border-radius:var(--r)}
+.col2 .b{position:absolute;right:0;bottom:0;width:58%;height:60%;border-radius:200px 200px var(--r) var(--r);border:8px solid var(--blush)}
+@media(min-width:940px){.id .g{grid-template-columns:1fr 1fr;gap:100px}}
+/* ===== profissional ===== */
+.ab{background:var(--lilac);border-radius:56px;margin-inline:clamp(8px,2vw,28px)}
+.ab .g{display:grid;gap:56px;align-items:center}
+.ab-p{position:relative;padding-bottom:16%}
+.ab-p .big{aspect-ratio:4/5;width:84%;border-radius:var(--r)}
+.ab-p .sm{position:absolute;right:0;bottom:0;width:44%;aspect-ratio:1;border-radius:50%;border:8px solid var(--lilac)}
+.ab p{color:#5B4D63;margin-top:18px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0}
+.tags span{padding:9px 18px;border-radius:99px;background:#ffffffb3;font-size:.86rem;font-weight:400;letter-spacing:.02em}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-top:26px;border-top:1px solid #3B2D3626}
+.nums b{display:block;font:200 clamp(2.6rem,8vw,4.2rem)/1 var(--f);letter-spacing:-.05em;color:var(--acc);font-variant-numeric:tabular-nums}
+.nums small{font-size:.84rem;color:#5B4D63;line-height:1.3;display:block;margin-top:4px}
+@media(min-width:940px){.ab .g{grid-template-columns:.95fr 1.05fr;gap:110px}}
+/* ===== como funciona ===== */
+.st{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:40px calc(var(--pad)*-1) 0;padding:0 var(--pad) 8px;scrollbar-width:none}
+.st::-webkit-scrollbar{display:none}
+.stp{flex:0 0 min(80vw,340px);scroll-snap-align:start;background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 24px 44px -34px #A34E5A}
+.stp .im{aspect-ratio:4/3}.stp:hover .im img{transform:scale(1.08)}
+.stp div.t{padding:26px 26px 32px;position:relative}
+.stp .n{position:absolute;right:22px;top:-26px;width:52px;height:52px;border-radius:50%;background:var(--rose);color:var(--ink);display:grid;place-items:center;font:400 1.05rem var(--f);box-shadow:0 0 0 6px #fff}
+.stp:nth-child(2) .n{background:var(--lilac)}.stp:nth-child(3) .n{background:var(--peach)}
+.stp h3{margin-bottom:8px}.stp p{color:var(--mut);font-size:.98rem}
+@media(min-width:900px){.st{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-inline:0;padding:0;overflow:visible}.stp{flex:none}.stp:nth-child(2){margin-top:44px}.stp:nth-child(3){margin-top:88px}}
+/* ===== para você ===== */
+.fit{background:var(--peach)}
+.fit .g{display:grid;gap:50px;align-items:center}
+.fit .im{aspect-ratio:4/5;max-width:520px;border-radius:240px 240px var(--r) var(--r)}
+.fit ul{list-style:none;padding:0;margin-top:30px;display:grid;gap:10px}
+.fit li{display:flex;gap:16px;align-items:center;padding:16px 22px;background:#ffffffa6;border-radius:99px;font:400 1.1rem/1.3 var(--f);letter-spacing:-.01em;transition:transform .5s var(--ease),background .3s}
+.fit li:hover{transform:translateX(8px);background:#fff}
+.fit li svg{flex:none;width:30px;height:30px;padding:7px;border-radius:50%;background:var(--rose2);stroke:var(--ink);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+@media(min-width:900px){.fit .g{grid-template-columns:.8fr 1.2fr;gap:100px}}
+/* ===== especialidade ===== */
+.sp{position:relative;overflow:hidden}
+.sp .bgi{position:absolute;inset:0}
+.sp .bgi::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#FBF5F2f0,#F2CFCBe6)}
+.sp .wrap{position:relative;z-index:1}
+.sp .gr{display:grid;gap:12px;margin-top:40px}
+.sp .bx{padding:30px;border-radius:var(--r);background:#ffffffb8;backdrop-filter:blur(12px);border:1px solid #fff;transition:transform .5s var(--ease),background .3s}
+.sp .bx:hover{transform:translateY(-6px);background:#fff}
+.sp .bx h3{color:var(--acc);margin-bottom:8px;font-weight:500}.sp .bx p{color:#5B4D63}
+@media(min-width:800px){.sp .gr{grid-template-columns:repeat(2,1fr)}}@media(min-width:1100px){.sp .gr{grid-template-columns:repeat(4,1fr)}}
+/* ===== provas ===== */
+.pf .box{position:relative;margin-top:40px;min-height:34rem}
+.sl{position:absolute;inset:0;display:grid;gap:26px;align-items:center;opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease),visibility .9s}
+.sl.on{opacity:1;visibility:visible;transform:none}
+.sl .im{aspect-ratio:1;border-radius:var(--r);max-height:340px;width:100%}
+.sl blockquote{font:300 clamp(1.5rem,4vw,2.4rem)/1.2 var(--f);letter-spacing:-.03em;text-wrap:balance}
+.sl footer{margin-top:20px;font-size:.95rem;color:var(--mut)}.sl footer b{color:var(--ink);display:block;font-weight:500}
+@media(min-width:860px){.pf .box{min-height:26rem}.sl{grid-template-columns:.7fr 1.3fr;gap:70px}.sl .im{max-height:none}}
+.dots{display:flex;gap:8px;margin-top:20px}
+.dots button{width:44px;height:44px;border:0;background:none;cursor:pointer;position:relative}
+.dots button::before,.dots button::after{content:"";position:absolute;left:3px;right:3px;top:50%;height:2px;border-radius:2px;background:var(--line)}
+.dots button::after{background:var(--acc);transform:scaleX(0);transform-origin:left}
+.dots button[aria-current=true]::after{animation:pr 7s linear forwards}
+@keyframes pr{to{transform:scaleX(1)}}
+.auth{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px}
+.auth span{padding:10px 20px;border-radius:99px;background:var(--lilac);font-weight:400;font-size:.9rem}
+/* ===== galeria (sem buracos) ===== */
+.gal{display:grid;grid-auto-flow:dense;grid-template-columns:repeat(2,1fr);grid-auto-rows:clamp(150px,40vw,280px);gap:10px;margin-top:40px}
+.gal .im{border-radius:var(--r)}
+.gal .im:nth-child(1){grid-column:span 2;grid-row:span 2;border-radius:var(--r) var(--r) 200px var(--r)}.gal .im:nth-child(4),.gal .im:nth-child(7){grid-column:span 2}
+.gal .im:hover img{transform:scale(1.08)}
+.gal figcaption{position:absolute;left:14px;bottom:14px;background:#ffffffe6;color:var(--ink);padding:7px 16px;border-radius:99px;font:400 .82rem var(--f);letter-spacing:.03em;z-index:2}
+@media(min-width:900px){.gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:250px}.gal .im:nth-child(3){grid-row:span 2}.gal .im:nth-child(4),.gal .im:nth-child(7){grid-column:auto}.gal .im:nth-child(5){grid-column:span 2}}
+/* ===== faq ===== */
+.faq{background:#fff}
+.faq .w{max-width:880px;margin-inline:auto}
+.faq .w>h2{margin-bottom:30px}
+.faq details{border-top:1px solid var(--line)}.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:18px;min-height:44px;padding:24px 0;font:400 clamp(1.15rem,2.6vw,1.45rem)/1.25 var(--f);letter-spacing:-.025em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;width:36px;height:36px;border-radius:50%;background:var(--rose);position:relative;transition:background .3s,transform .5s var(--ease)}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;inset:50% 11px auto;height:1.8px;margin-top:-1px;background:var(--ink);border-radius:2px;transition:transform .4s var(--ease)}
+.faq summary i::after{transform:rotate(90deg)}
+.faq details[open] summary i{background:var(--lilac);transform:rotate(180deg)}.faq details[open] summary i::after{transform:rotate(0)}
+.faq .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.faq details[open] .ans{grid-template-rows:1fr}
+.faq .ans>div{overflow:hidden}.faq .ans p{padding-bottom:24px;color:var(--mut)}
+/* ===== cta ===== */
+.cta{position:relative;overflow:hidden;min-height:92svh;display:grid;align-items:end}
+.cta .bgi{position:absolute;inset:0}
+.cta .bgi::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#F2CFCB 14%,#F2CFCBdd 46%,#F2CFCB22 90%)}
+.cta .wrap{position:relative;z-index:1;width:100%}
+.cta h2{font-size:clamp(2.7rem,9vw,6.2rem);letter-spacing:-.05em;max-width:12ch;line-height:.98}
+.cta p{margin:22px 0 30px;color:#5B4D63;font-size:1.15rem}
+.cta .row{display:flex;flex-wrap:wrap;gap:12px}
+footer.ft{background:var(--ink);color:#C9BAC2;padding:24px var(--pad) 96px;font-size:.86rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+.bar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:65;transform:translateY(160%);transition:transform .6s var(--ease)}
+.bar.on{transform:none}.bar .btn{width:100%;justify-content:center;box-shadow:0 18px 30px -14px #3B2D3699}
+@media(min-width:760px){.bar{display:none}footer.ft{padding-bottom:36px}}
+/* ===== reveal ===== */
+.rv{opacity:0;transform:translateY(32px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:calc(var(--i,0)*100ms)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.im.rv{opacity:1;transform:none;clip-path:none}#ld{display:none}.hl .ln>span{transform:none}.hl .hi{background-size:100% 100%}.sl:not(.on){display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Ir para o conteúdo</a>
+<div id="pg" aria-hidden="true"></div>
+<div id="ld" aria-hidden="true"><b></b></div>
+
+<header id="hd">
+  <a class="logo" href="#top" aria-label="Helena Duarte, início"><b>Helena Duarte</b><small>Nutricionista · Emagrecimento sustentável</small></a>
+  <a class="btn sm mg" data-wa href="#agendar">Agendar consulta</a>
+</header>
+
+<main id="main">
+<!-- 01 HERO -->
+<section class="hero" id="top">
+  <div class="hbg im" data-art="p" data-ph="photo-1594824476967-48c8b964273f" data-alt="Helena Duarte, nutricionista, sorrindo em seu consultório" data-hero></div>
+  <div class="wrap">
+    <div class="txt">
+      <span class="lab rv">Nutrição para mulheres que já tentaram de tudo</span>
+      <h1 class="hl" aria-label="Emagrecer sem recomeçar toda segunda-feira."><span class="ln" aria-hidden="true"><span class="lt">Emagrecer sem</span></span><span class="ln" aria-hidden="true"><span>recomeçar toda</span></span><span class="ln" aria-hidden="true"><span class="hi">segunda-feira.</span></span></h1>
+      <p class="lead rv">Um plano que cabe na sua rotina e continua funcionando depois do primeiro mês. Sem cortar o que você gosta, sem planilha, sem culpa.</p>
+      <div class="row rv" style="--i:1">
+        <a class="btn mg" data-wa href="#agendar">Quero agendar minha consulta <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+        <a class="btn ol" href="#como">Como funciona</a>
+      </div>
+      <div class="proofrow rv" style="--i:2">
+        <div class="av"><span class="im" data-art="p" data-ph="photo-1438761681033-6461ffad8d80"></span><span class="im" data-art="p" data-ph="photo-1494790108377-be9c29b29330"></span><span class="im" data-art="p" data-ph="photo-1544005313-94ddf0286df2"></span></div>
+        <span>Mais de 1.200 mulheres acompanhadas · online e presencial</span>
+      </div>
+    </div>
+  </div>
+  <div class="hcard"><b>94%</b><span>concluem o<br>primeiro ciclo</span></div>
+</section>
+
+<div class="mq" aria-hidden="true"><div>
+  <span>sem dieta radical</span><span>sem culpa</span><span>com rotina real</span><span>com ciência</span><span>com escuta</span><span>com resultado que fica</span>
+  <span>sem dieta radical</span><span>sem culpa</span><span>com rotina real</span><span>com ciência</span><span>com escuta</span><span>com resultado que fica</span>
+</div></div>
+
+<!-- 02 IDENTIFICAÇÃO -->
+<section class="id">
+  <div class="wrap g">
+    <div>
+      <span class="lab rv">Talvez você se reconheça</span>
+      <h2 class="rv" style="--i:1">Você não precisa de mais uma <span class="lt">dieta impossível</span> de seguir.</h2>
+      <ul class="sit">
+        <li class="rv">Sua rotina não combina com dietas prontas.</li>
+        <li class="rv" style="--i:1">Você começa e não consegue manter.</li>
+        <li class="rv" style="--i:2">Já tentou várias estratégias e o corpo parece não responder.</li>
+        <li class="rv" style="--i:3">Quer cuidar da alimentação sem transformar a vida em uma planilha.</li>
+      </ul>
+    </div>
+    <div class="col2">
+      <div class="a im rv" data-art="s" data-ph="photo-1490645935967-10de6ba17061" data-alt="Mesa com alimentos frescos e coloridos"></div>
+      <div class="b im rv" style="--i:2" data-art="l" data-ph="photo-1506126613408-eca07ce68773" data-alt="Mulher em momento de calma e bem-estar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 PROFISSIONAL -->
+<section class="ab" id="sobre">
+  <div class="wrap g">
+    <div class="ab-p">
+      <div class="big im rv" data-art="p" data-ph="photo-1559839734-2b71ea197ec2" data-alt="Retrato de Helena Duarte"></div>
+      <div class="sm im rv" style="--i:2" data-art="s" data-ph="photo-1512621776951-a57141f2eefd" data-alt="Refeição preparada por Helena"></div>
+    </div>
+    <div>
+      <span class="lab rv">Conheça a nutricionista</span>
+      <h2 class="rv" style="--i:1">Conheça a <span class="lt">Helena</span></h2>
+      <p class="rv">Sou nutricionista há 11 anos e já acompanhei mais de mil mulheres que chegaram cansadas de recomeçar. Aprendi que o melhor plano não é o mais rígido: é o que você consegue seguir numa terça-feira difícil.</p>
+      <p class="rv">Meu trabalho junta ciência e escuta. Avalio seu corpo, sua rotina e sua relação com a comida antes de falar em cardápio.</p>
+      <div class="tags rv"><span>Nutrição · USP</span><span>Pós em Nutrição Comportamental</span><span>Especialista em Emagrecimento</span></div>
+      <div class="nums rv">
+        <div><b data-n="11">0</b><small>anos de prática</small></div>
+        <div><b data-n="1200">0</b><small>mulheres acompanhadas</small></div>
+        <div><b data-n="94">0</b><small>% concluem o ciclo</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 COMO FUNCIONA -->
+<section class="wrap" id="como">
+  <span class="lab rv">O acompanhamento</span>
+  <h2 class="rv" style="--i:1">Como funciona seu <span class="lt">acompanhamento</span></h2>
+  <div class="st">
+    <article class="stp rv"><div class="im" data-art="l" data-ph="photo-1556911220-bff31c812dba" data-alt="Conversa de consulta nutricional"></div><div class="t"><span class="n">01</span><h3>Consulta</h3><p>Entendimento da sua rotina, dos seus objetivos e das suas necessidades. Uma conversa sem pressa.</p></div></article>
+    <article class="stp rv" style="--i:1"><div class="im" data-art="s" data-ph="photo-1504674900247-0877df9cc836" data-alt="Prato equilibrado montado com cuidado"></div><div class="t"><span class="n">02</span><h3>Estratégia</h3><p>Construção de uma orientação nutricional personalizada, desenhada para caber na sua vida.</p></div></article>
+    <article class="stp rv" style="--i:2"><div class="im" data-art="l" data-ph="photo-1518611012118-696072aa579a" data-alt="Mulher praticando atividade física ao ar livre"></div><div class="t"><span class="n">03</span><h3>Acompanhamento</h3><p>Ajustes e evolução ao longo do processo, com retornos e suporte direto quando você precisar.</p></div></article>
+  </div>
+</section>
+
+<!-- 05 PARA VOCÊ -->
+<section class="fit">
+  <div class="wrap g">
+    <div class="im rv" data-art="p" data-ph="photo-1571019613454-1cb2f99b2d8b" data-alt="Mulher ativa treinando"></div>
+    <div>
+      <h2 class="rv">O acompanhamento pode fazer sentido para você se...</h2>
+      <ul>
+        <li class="rv"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Busca emagrecimento com saúde</li>
+        <li class="rv" style="--i:1"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Quer melhorar sua alimentação</li>
+        <li class="rv" style="--i:2"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Precisa de uma estratégia compatível com sua rotina</li>
+        <li class="rv" style="--i:3"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Pratica atividade física</li>
+        <li class="rv" style="--i:4"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Quer acompanhamento profissional</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 06 ESPECIALIDADE -->
+<section class="sp" id="servico">
+  <div class="bgi im" data-art="s" data-ph="photo-1547592180-85f173990554" data-alt=""></div>
+  <div class="wrap">
+    <span class="lab rv">Especialidade</span>
+    <h2 class="rv" style="--i:1">Emagrecimento com <span class="lt">nutrição comportamental</span></h2>
+    <div class="gr">
+      <div class="bx rv"><h3>Para quem é</h3><p>Mulheres de 25 a 55 anos com rotina intensa, histórico de dietas e vontade de uma relação mais leve com a comida.</p></div>
+      <div class="bx rv" style="--i:1"><h3>O que trabalhamos</h3><p>Compulsão e fome emocional, organização das refeições, sono, constância e autonomia nas escolhas.</p></div>
+      <div class="bx rv" style="--i:2"><h3>Como funciona</h3><p>Ciclos de 3 meses, consultas quinzenais e plano flexível, com ajustes conforme a sua rotina muda.</p></div>
+      <div class="bx rv" style="--i:3"><h3>Modalidade</h3><p>Online por vídeo, de qualquer lugar do Brasil, ou presencial no consultório em São Paulo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 PROVA -->
+<section class="pf wrap" id="provas">
+  <span class="lab rv">Experiências</span>
+  <h2 class="rv" style="--i:1">O que muda quando a comida <span class="lt">deixa de ser problema</span></h2>
+  <div class="box" id="sl">
+    <figure class="sl on"><div class="im" data-art="p" data-ph="photo-1438761681033-6461ffad8d80" data-alt="Carla, paciente"></div><div><blockquote>O acompanhamento mudou minha relação com a alimentação. Hoje eu como bem sem pensar em dieta.</blockquote><footer><b>Carla M., 38 anos</b>Paciente há 8 meses</footer></div></figure>
+    <figure class="sl"><div class="im" data-art="p" data-ph="photo-1494790108377-be9c29b29330" data-alt="Juliana, paciente"></div><div><blockquote>Perdi 9 kg em cinco meses sem cortar o jantar com a minha família.</blockquote><footer><b>Juliana R., 34 anos</b>Paciente há 6 meses</footer></div></figure>
+    <figure class="sl"><div class="im" data-art="p" data-ph="photo-1544005313-94ddf0286df2" data-alt="Renata, paciente"></div><div><blockquote>Pela primeira vez, um plano que sobreviveu à minha agenda.</blockquote><footer><b>Renata A., 41 anos</b>Paciente há 1 ano</footer></div></figure>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="auth rv"><span>CRN-3 · registro ativo</span><span>Palestrante em congressos de nutrição</span><span>Colunista de bem-estar</span></div>
+</section>
+
+<!-- 08 GALERIA -->
+<section class="wrap" style="padding-top:0" id="universo">
+  <span class="lab rv">Bastidores</span>
+  <h2 class="rv" style="--i:1">Conheça o universo da <span class="lt">Helena</span></h2>
+  <div class="gal">
+    <figure class="im rv" data-art="s" data-ph="photo-1543362906-acfc16c67564" data-alt="Café da manhã colorido"><figcaption>Café de domingo</figcaption></figure>
+    <figure class="im rv" style="--i:1" data-art="s" data-ph="photo-1498837167922-ddd27525d352" data-alt="Vegetais frescos"></figure>
+    <figure class="im rv" style="--i:2" data-art="p" data-ph="photo-1573496359142-b8d87734a5a2" data-alt="Helena em atendimento"><figcaption>Consultório</figcaption></figure>
+    <figure class="im rv" data-art="s" data-ph="photo-1476224203421-9ac39bcb3327" data-alt="Prato finalizado"><figcaption>Cozinha de testes</figcaption></figure>
+    <figure class="im rv" style="--i:1" data-art="l" data-ph="photo-1540420773420-3366772f4999" data-alt="Ingredientes da feira"></figure>
+    <figure class="im rv" style="--i:2" data-art="s" data-ph="photo-1505576399279-565b52d4ac71" data-alt="Ingredientes sobre a bancada"></figure>
+    <figure class="im rv" data-art="l" data-ph="photo-1497366216548-37526070297c" data-alt="Consultório iluminado"></figure>
+  </div>
+</section>
+
+<!-- 09 FAQ -->
+<section class="faq">
+  <div class="w">
+    <h2 class="rv">Perguntas <span class="lt">frequentes</span></h2>
+    <details name="f" open><summary>É presencial ou online?<i></i></summary><div class="ans"><div><p>Os dois. Você escolhe entre consulta por vídeo, de qualquer lugar, ou presencial no consultório em São Paulo.</p></div></div></details>
+    <details name="f"><summary>Como funciona a primeira consulta?<i></i></summary><div class="ans"><div><p>Dura cerca de 1h15. Conversamos sobre histórico, rotina e objetivos, e você sai com os primeiros passos definidos.</p></div></div></details>
+    <details name="f"><summary>Quanto tempo dura o acompanhamento?<i></i></summary><div class="ans"><div><p>Trabalho em ciclos de 3 meses, que podem ser renovados conforme a sua evolução.</p></div></div></details>
+    <details name="f"><summary>Preciso fazer exames antes?<i></i></summary><div class="ans"><div><p>Não é obrigatório para começar. Se tiver exames recentes, leve. Se eu julgar necessário, peço depois da primeira consulta.</p></div></div></details>
+    <details name="f"><summary>Como faço para agendar?<i></i></summary><div class="ans"><div><p>Pelo botão de WhatsApp desta página. Respondo em até um dia útil com os horários disponíveis.</p></div></div></details>
+  </div>
+</section>
+
+<!-- 10 CTA -->
+<section class="cta" id="agendar">
+  <div class="bgi im" data-art="p" data-ph="photo-1580489944761-15a19d654956" data-alt="Helena Duarte convidando para a consulta"></div>
+  <div class="wrap">
+    <h2 class="rv">Seu próximo passo pode <span class="lt">começar aqui.</span></h2>
+    <p class="rv" style="--i:1">Uma conversa para entender o seu momento e desenhar um caminho que você consiga seguir.</p>
+    <div class="row rv" style="--i:2"><a class="btn mg" data-wa href="#agendar">Quero agendar minha consulta <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+</main>
+<footer class="ft"><span>© 2026 Helena Duarte · Nutricionista CRN-3 00000</span><span>Página de demonstração · nutricionista fictícia</span></footer>
+<div class="bar" id="bar"><a class="btn" data-wa href="#agendar">Agendar consulta</a></div>
+
+<script>
+(()=>{
+const $=(s,c=document)=>[...c.querySelectorAll(s)],rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+/* WhatsApp: troque o número aqui */
+const WA='https://wa.me/5511999999999?text='+encodeURIComponent('Olá, Helena! Quero agendar minha consulta.');
+$('[data-wa]').forEach(a=>{a.href=WA;a.target='_blank';a.rel='noopener'});
+/* loader */
+const lb=$('#ld b')[0];'Helena Duarte'.split('').forEach((c,i)=>{const s=document.createElement('span');s.innerHTML=c===' '?'&nbsp;':c;s.style.setProperty('--i',i);lb.append(s)});
+const off=()=>{$('#ld')[0].classList.add('off');document.body.classList.add('ready')};
+addEventListener('load',()=>setTimeout(off,rm?0:1000));setTimeout(off,2800);
+/* header, progresso, barra, parallax */
+const hd=$('#hd')[0],pg=$('#pg')[0],bar=$('#bar')[0],par=[];
+addEventListener('scroll',()=>{const y=scrollY,H=document.documentElement.scrollHeight;hd.classList.toggle('on',y>30);pg.style.transform=`scaleX(${y/(H-innerHeight)})`;bar.classList.toggle('on',y>innerHeight*.7&&y<H-innerHeight*1.5);
+if(!rm)par.forEach(i=>{const r=i.parentNode.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)i.style.transform=`translateY(${((r.top+r.height/2)/innerHeight-.5)*-36}px)`})},{passive:true});
+/* reveal + contadores */
+const cnt=el=>{const t=+el.dataset.n,s=performance.now();(function f(n){const k=Math.min((n-s)/1600,1);el.textContent=Math.round(t*(1-Math.pow(1-k,4))).toLocaleString('pt-BR');k<1&&requestAnimationFrame(f)})(s)};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');$('[data-n]',e.target).forEach(cnt);io.unobserve(e.target)}),{threshold:.12});
+$('.rv').forEach(el=>io.observe(el));if(rm)$('[data-n]').forEach(el=>el.textContent=(+el.dataset.n).toLocaleString('pt-BR'));
+/* botão magnético */
+if(matchMedia('(hover:hover)').matches&&!rm)$('.mg').forEach(b=>{b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.14}px,${(e.clientY-r.top-r.height/2)*.22}px)`});b.addEventListener('pointerleave',()=>b.style.transform='')});
+/* depoimentos */
+const sl=$('.sl'),dots=$('#dots')[0];let tm;
+sl.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Depoimento '+(i+1));b.onclick=()=>go(i);dots.append(b)});
+function go(i){sl.forEach((s,j)=>s.classList.toggle('on',j===i));[...dots.children].forEach((b,j)=>{b.removeAttribute('aria-current');void b.offsetWidth;if(j===i)b.setAttribute('aria-current','true')});clearTimeout(tm);if(!rm)tm=setTimeout(()=>go((i+1)%sl.length),7000)}
+go(0);
+/* fotos reais (Unsplash) sobre uma arte de segurança: se a foto não carregar, o layout continua completo */
+const uri=s=>`url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid slice'><defs><filter id='gr' x='0' y='0' width='100%' height='100%'><feTurbulence baseFrequency='.9' numOctaves='2' seed='8'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 -.2'/></filter><filter id='b3'><feGaussianBlur stdDeviation='3'/></filter><filter id='b8'><feGaussianBlur stdDeviation='9'/></filter><linearGradient id='wl' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#F7E8E4'/><stop offset='1' stop-color='#E3C6C6'/></linearGradient><linearGradient id='ig' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#9A7585'/><stop offset='1' stop-color='#3B2D36'/></linearGradient><radialGradient id='pl' cx='.45' cy='.4'><stop offset='.55' stop-color='#fff'/><stop offset='1' stop-color='#DED6C7'/></radialGradient><radialGradient id='tm' cx='.35' cy='.3'><stop offset='0' stop-color='#FF8A63'/><stop offset='1' stop-color='#C23A1F'/></radialGradient><linearGradient id='gn' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#9DB86B'/><stop offset='1' stop-color='#4A7338'/></linearGradient><linearGradient id='sa' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#F7A27C'/><stop offset='1' stop-color='#CF5B3C'/></linearGradient></defs>${s}<rect width='100' height='100' filter='url(#gr)' opacity='.5'/></svg>`)}")`;
+const lf=(x,y,a)=>`<path d='M0 0Q6 -5 13 0Q6 5 0 0Z' fill='url(#gn)' transform='translate(${x} ${y}) rotate(${a}) scale(1.1)'/>`;
+const art={
+p:n=>uri(`<rect width='100' height='100' fill='url(#wl)'/><path d='M55 0H100V70Z' fill='#fff' opacity='.3' filter='url(#b3)'/><circle cx='50' cy='36' r='30' fill='#FFF1D6' opacity='.7' filter='url(#b8)'/><rect x='44' y='54' width='12' height='16' fill='url(#ig)'/><path d='M8 100Q10 71 50 65Q90 71 92 100Z' fill='url(#ig)'/><ellipse cx='50' cy='40' rx='13.5' ry='16' fill='url(#ig)'/><path d='M35 42Q31 15 50 17Q69 15 65 42Q61 29 50 29Q39 29 35 42Z' fill='#2E2229'/><circle cx='50' cy='18' r='6.5' fill='#2E2229'/><path d='M64 40Q65 24 53 19' stroke='#FFD9B0' stroke-width='.9' fill='none' opacity='.85'/>`),
+s:n=>{const bg=['#D8CCB8','#C5CBD2','#E1D0C0'][n%3];let o=`<rect width='100' height='100' fill='${bg}'/><ellipse cx='54' cy='80' rx='35' ry='6' fill='#000' opacity='.3' filter='url(#b3)'/><circle cx='50' cy='52' r='34' fill='url(#pl)'/><circle cx='50' cy='52' r='27' fill='none' stroke='#000' stroke-opacity='.07'/>`;
+if(n%2){o+=`<rect x='32' y='42' width='34' height='17' rx='7' fill='url(#sa)' transform='rotate(-14 50 50)'/>`;[[62,62,20],[66,56,-10],[56,66,60],[30,62,-120]].forEach(l=>o+=lf(...l))}
+else{for(let i=0;i<60;i++){const a=i*2.4,r=Math.sqrt(i/60)*19;o+=`<circle cx='${(50+Math.cos(a)*r*1.1).toFixed(1)}' cy='${(55+Math.sin(a)*r).toFixed(1)}' r='1.7' fill='${i%3?'#DDBB78':'#C49A52'}'/>`}[[36,44,-30],[44,36,10],[58,40,40],[64,50,80]].forEach(l=>o+=lf(...l));[[56,60],[42,62],[50,48]].forEach(t=>o+=`<circle cx='${t[0]}' cy='${t[1]}' r='5' fill='url(#tm)'/>`)}
+return uri(o)},
+l:n=>uri(`<rect width='100' height='100' fill='${n%2?'#CFC7BD':'#E3D6C2'}'/><path d='M-10 20L45 -20L70 -20L-10 50Z' fill='#fff' opacity='.5' filter='url(#b3)'/><path d='M-10 60L80 -5L100 -5L-10 85Z' fill='#fff' opacity='.3' filter='url(#b3)'/><rect y='84' width='100' height='16' fill='#7C664E' opacity='.7'/><circle cx='70' cy='60' r='16' fill='#E7A9A8' opacity='.85'/><circle cx='70' cy='60' r='9' fill='none' stroke='#fff' stroke-opacity='.5'/>`)};
+$('[data-art]').forEach((el,n)=>{el.style.backgroundImage=art[el.dataset.art](n);
+if(el.dataset.alt)el.setAttribute('role','img'),el.setAttribute('aria-label',el.dataset.alt);
+if(el.dataset.ph){const i=new Image();i.alt='';i.decoding='async';if(!el.hasAttribute('data-hero'))i.loading='lazy';
+i.onload=()=>{i.classList.add('ok');par.push(i)};i.onerror=()=>i.remove();
+i.src=`https://images.unsplash.com/${el.dataset.ph}?auto=format&fit=crop&w=1200&q=80`;el.prepend(i)}});
+})();
+</script>
+</body>
+</html>
